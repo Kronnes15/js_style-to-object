@@ -13,12 +13,9 @@ function convertToObject(sourceString) {
       const [property, value] = declaration
         .split(':')
         .map((item) => item.trim());
-      const camelCasedProperty = property.replace(
-        /-([a-z])/g,
-        (match, letter) => letter.toUpperCase(),
-      );
 
-      return { [camelCasedProperty]: value };
+      // Залишити властивість з дефісами
+      return { [property]: value };
     })
     .reduce((accumulator, current) => Object.assign(accumulator, current), {});
 }
